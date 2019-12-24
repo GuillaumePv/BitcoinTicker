@@ -1,3 +1,5 @@
+import 'price.dart';
+
 const List<String> currenciesList = [
   'AUD',
   'BRL',
@@ -28,4 +30,14 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {}
+class CoinData {
+
+  Future<dynamic> getPriceData(String selectCryptocurrency, String selectedCurrency) async {
+    PriceModel priceModel = PriceModel(
+        selectedCurrency: selectedCurrency,
+        selectedCryptocurrency: selectCryptocurrency);
+    var priceData = await priceModel.getPriceData();
+    return priceData;
+  }
+
+}
